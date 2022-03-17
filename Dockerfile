@@ -2,7 +2,11 @@ ARG DOCKER_REGISTRY
 
 FROM nvidia/opengl:1.2-glvnd-devel
 
+# Should not need xvfb to run pyglet with EGL context
+
 RUN apt-get update -y && apt-get install -y  \
+    xvfb \
+    libfontconfig-dev \
     freeglut3-dev \
     python3-pip \
     python3-numpy \
@@ -16,7 +20,6 @@ ENV PIP_INDEX_URL=${PIP_INDEX_URL}
 
 WORKDIR /gym-duckietown
 
-
 RUN python3 -m pip install -U "pip>=21"
 
 ## first install the ones that do not change
@@ -26,7 +29,7 @@ RUN python3 -m pip install  -r requirements.pin.txt
 #
 COPY requirements.* ./
 RUN python3 -m pip install -r requirements.txt
-RUN python3 -m pip install pyglet==1.5.15
+RUN python3 -m pip install pyglet==1.5.22
 
 COPY . .
 RUN ls
@@ -38,8 +41,4 @@ RUN find /usr/local/lib/python3.8/dist-packages/gym_duckietown
 RUN python3 -c "import gym_duckietown;print(gym_duckietown.__file__)"
 RUN python3 -c "from gym_duckietown.randomization import Randomizer; r = Randomizer()"
 
-
-
 RUN pipdeptree
-
-ENTRYPOINT [ "xvfb-run" ]
