@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # manual
 
 """
@@ -19,7 +19,7 @@ from gym_duckietown.envs import DuckietownEnv
 # from experiments.utils import save_img
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--env-name", default=None)
+parser.add_argument("--env-name", default="Duckietown")
 parser.add_argument("--map-name", default="udem1")
 parser.add_argument("--distortion", default=False, action="store_true")
 parser.add_argument("--camera_rand", default=False, action="store_true")

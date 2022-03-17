@@ -1,0 +1,14 @@
+tile_size: 0.585
+tiles:
+- [grass, grass, curve_left/W, curve_left/N, grass]
+- [grass, grass, straight/S, straight/S, grass]
+- [curve_left/W, straight/E, curve_left/E, curve_left/S, curve_left/N]
+- [straight/S, curve_left/W, curve_left/N, grass, straight/S]
+- [curve_left/S, curve_left/E, curve_left/S, straight/E, curve_left/E]
+objects:
+- height: 0.06
+  kind: duckie
+  optional: false
+  pos: [2.243872547820272, 1.2590781627647563]
+  rotate: 131
+  static: true
